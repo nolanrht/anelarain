@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/age", "destination": "/age.html" }
+  ],
   "redirects": [
     {
       "source": "/go",
