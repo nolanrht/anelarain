@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Anela Rain</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Anela Rain – contenu exclusif et réseaux sociaux">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Anela Rain">
+<meta property="og:description" content="Retrouve-moi sur tous mes réseaux 🌸">
+<meta property="og:type" content="profile">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F7FKVJ9F6Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F7FKVJ9F6Y');
+</script>
+
+<style>
+  :root { color-scheme: dark; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    min-height: 100dvh;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    overflow-x: hidden;
+    position: relative;
+    background: #f07aaa;
+  }
+
+  /* Background photo */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .bg-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: blur(2px) brightness(0.9) saturate(1.1);
+    transform: scale(1.05);
+  }
+
+  /* Pink overlay — même teinte que Sydney */
+  .pink-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(255, 190, 215, 0.2) 0%, rgba(255, 130, 175, 0.4) 100%);
+  }
+
+  /* Décos flottantes animées */
+  .deco {
+    position: fixed;
+    z-index: 2;
+    color: rgba(255, 200, 215, 0.7);
+    pointer-events: none;
+    user-select: none;
+    animation: float 4s ease-in-out infinite;
+  }
+  .deco-1 { top: 18%; left: 7%;  font-size: 36px; animation-delay: 0s; }
+  .deco-2 { top: 35%; right: 8%; font-size: 48px; animation-delay: 1s; }
+  .deco-3 { bottom: 30%; left: 10%; font-size: 44px; animation-delay: 2s; }
+  .deco-4 { bottom: 16%; right: 7%; font-size: 32px; animation-delay: 0.5s; }
+  .deco-5 { top: 10%; right: 20%; font-size: 28px; animation-delay: 1.5s; }
+  .deco-6 { bottom: 45%; left: 5%; font-size: 24px; animation-delay: 3s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Carte */
+  .card {
+    position: relative;
+    z-index: 3;
+    width: calc(100vw - 24px);
+    max-width: 380px;
+    min-height: auto;
+    background: rgba(255, 255, 255, 0.07);
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    border-radius: 28px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 36px 20px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Avatar */
+  .avatar {
+    width: min(52vw, 190px);
+    height: min(52vw, 190px);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 10%;
+    border: 4px solid rgba(255,255,255,0.95);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* Nom */
+  .name {
+    font-size: clamp(28px, 8vw, 38px);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Badge vérifié */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #e8a0c0, #c060a0);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(180,60,120,0.5);
+  }
+  .badge svg { width: 18px; height: 18px; }
+
+  /* Bouton */
+  .cta {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    padding: 18px 24px;
+    background: rgba(220,130,160,0.55);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.18s ease, transform 0.12s ease;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .cta:hover { background: rgba(255,255,255,0.18); transform: scale(1.01); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .deco { animation: none; }
+    .cta { transition: none; }
+  }
+
+  /* ── Mobile uniquement (<768px) ── */
+  @media (max-width: 767px) {
+    body { padding: 8px; align-items: center; }
+    .card {
+      width: calc(100vw - 24px);
+      max-width: 360px;
+      min-height: auto;
+      border-radius: 28px;
+      border: 2px solid rgba(255,255,255,0.55);
+      padding: 36px 18px 32px;
+      background: rgba(255,255,255,0.07);
+    }
+    .avatar {
+      width: min(52vw, 170px);
+      height: min(52vw, 170px);
+    }
+    .name { font-size: clamp(26px, 7vw, 34px); }
+    .cta {
+      font-size: 18px;
+      padding: 16px 22px;
+      margin-top: 20px;
+    }
+    /* décos repositionnées autour de la carte */
+    .deco-1 { top: 3%; left: 2%; font-size: 28px; }
+    .deco-2 { top: 15%; right: 2%; font-size: 36px; }
+    .deco-3 { bottom: 18%; left: 2%; font-size: 32px; }
+    .deco-4 { bottom: 4%; right: 3%; font-size: 26px; }
+    .deco-5 { top: 2%; right: 15%; font-size: 20px; }
+    .deco-6 { bottom: 32%; left: 1%; font-size: 18px; }
+  }
+
+  /* ── PC uniquement (≥768px) ── */
+  @media (min-width: 768px) {
+    body {
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .card {
+      width: 340px;
+      max-width: 340px;
+      min-height: auto;
+      border-radius: 24px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      padding: 32px 24px 28px;
+      background: rgba(255,255,255,0.08);
+    }
+    .avatar {
+      width: 160px;
+      height: 160px;
+    }
+    .name { font-size: 30px; }
+    .cta {
+      font-size: 18px;
+      padding: 16px 22px;
+      margin-top: 20px;
+      background: rgba(220,130,160,0.55);
+      border: 1.5px solid rgba(255,255,255,0.5);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="bg-layer">
+  <img class="bg-photo" src="/bg.jpg" alt="">
+</div>
+<div class="pink-overlay"></div>
+
+<span class="deco deco-1">✦</span>
+<span class="deco deco-2">♡</span>
+<span class="deco deco-3">♡</span>
+<span class="deco deco-4">✦</span>
+<span class="deco deco-5">✦</span>
+<span class="deco deco-6">♡</span>
+
+<div class="card">
+  <img class="avatar" src="/avatar.jpg" alt="Anela Rain">
+  <h1 class="name">Anela Rain
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </h1>
+  <a class="cta" href="https://onlyfans.com/anelaraiin" target="_blank" rel="noreferrer noopener">View More</a>
+</div>
+</body>
+</html>
