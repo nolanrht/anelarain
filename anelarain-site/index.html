@@ -302,12 +302,60 @@
 <div class="modal-overlay" id="ageModal" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal-card">
     <div class="modal-icon">🔞</div>
-    <h2>Contenu pour adultes</h2>
-    <p>Ce site contient du contenu réservé aux personnes majeures. En continuant, vous confirmez avoir au moins 18 ans.</p>
-    <a class="btn-yes" href="/go" target="_blank" rel="noreferrer noopener" onclick="document.getElementById('ageModal').classList.remove('active')">J'ai 18 ans ou plus ✓</a>
-    <a class="btn-no" href="https://www.google.com">Je suis mineur — quitter</a>
+    <h2 id="m-title"></h2>
+    <p id="m-body"></p>
+    <a class="btn-yes" id="m-yes" href="/go" target="_blank" rel="noreferrer noopener" onclick="document.getElementById('ageModal').classList.remove('active')"></a>
+    <a class="btn-no" id="m-no" href="#" onclick="document.getElementById('ageModal').classList.remove('active');return false;"></a>
   </div>
 </div>
+<script>
+(function(){
+  var i18n = {
+    fr: {
+      title: "Contenu pour adultes",
+      body:  "Ce site contient du contenu réservé aux personnes majeures. En continuant, vous confirmez avoir au moins 18 ans.",
+      yes:   "J'ai 18 ans ou plus ✓",
+      no:    "Je suis mineur — fermer"
+    },
+    en: {
+      title: "Adult content",
+      body:  "This site contains content intended for adults only. By continuing, you confirm that you are at least 18 years old.",
+      yes:   "I am 18 or older ✓",
+      no:    "I am a minor — close"
+    },
+    es: {
+      title: "Contenido para adultos",
+      body:  "Este sitio contiene contenido exclusivo para mayores de edad. Al continuar, confirmas que tienes al menos 18 años.",
+      yes:   "Tengo 18 años o más ✓",
+      no:    "Soy menor de edad — cerrar"
+    },
+    de: {
+      title: "Erwachseneninhalt",
+      body:  "Diese Seite enthält Inhalte, die nur für Erwachsene bestimmt sind. Indem Sie fortfahren, bestätigen Sie, dass Sie mindestens 18 Jahre alt sind.",
+      yes:   "Ich bin 18 oder älter ✓",
+      no:    "Ich bin minderjährig — schließen"
+    },
+    pt: {
+      title: "Conteúdo adulto",
+      body:  "Este site contém conteúdo reservado a maiores de idade. Ao continuar, você confirma ter pelo menos 18 anos.",
+      yes:   "Tenho 18 anos ou mais ✓",
+      no:    "Sou menor de idade — fechar"
+    },
+    it: {
+      title: "Contenuto per adulti",
+      body:  "Questo sito contiene contenuti riservati ai maggiorenni. Continuando, confermi di avere almeno 18 anni.",
+      yes:   "Ho 18 anni o più ✓",
+      no:    "Sono minorenne — chiudi"
+    }
+  };
+  var lang = (navigator.language || navigator.userLanguage || 'en').slice(0,2).toLowerCase();
+  var t = i18n[lang] || i18n['en'];
+  document.getElementById('m-title').textContent = t.title;
+  document.getElementById('m-body').textContent  = t.body;
+  document.getElementById('m-yes').textContent   = t.yes;
+  document.getElementById('m-no').textContent    = t.no;
+})();
+</script>
 
 </body>
 </html>
