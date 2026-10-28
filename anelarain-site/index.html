@@ -4,13 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Anela Rain</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Anela Rain – contenu exclusif et réseaux sociaux">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="Anela Rain">
-<meta property="og:description" content="Retrouve-moi sur tous mes réseaux 🌸">
-<meta property="og:type" content="profile">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7FKVJ9F6Y"></script>
@@ -42,7 +37,6 @@
     background: #f07aaa;
   }
 
-  /* Background photo */
   .bg-layer {
     position: fixed;
     inset: 0;
@@ -58,19 +52,17 @@
     transform: scale(1.05);
   }
 
-  /* Pink overlay — même teinte que Sydney */
   .pink-overlay {
     position: fixed;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(to bottom, rgba(255, 190, 215, 0.2) 0%, rgba(255, 130, 175, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(255,190,215,0.2) 0%, rgba(255,130,175,0.4) 100%);
   }
 
-  /* Décos flottantes animées */
   .deco {
     position: fixed;
     z-index: 2;
-    color: rgba(255, 200, 215, 0.7);
+    color: rgba(255,200,215,0.7);
     pointer-events: none;
     user-select: none;
     animation: float 4s ease-in-out infinite;
@@ -87,27 +79,21 @@
     50% { transform: translateY(-10px); }
   }
 
-  /* Carte */
   .card {
     position: relative;
     z-index: 3;
     width: calc(100vw - 24px);
     max-width: 380px;
-    min-height: auto;
-    background: rgba(255, 255, 255, 0.07);
-    border: 2px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255,255,255,0.07);
+    border: 2px solid rgba(255,255,255,0.55);
     border-radius: 28px;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     padding: 36px 20px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    justify-content: center;
   }
 
-  /* Avatar */
   .avatar {
     width: min(52vw, 190px);
     height: min(52vw, 190px);
@@ -120,7 +106,6 @@
     display: block;
   }
 
-  /* Nom */
   .name {
     font-size: clamp(28px, 8vw, 38px);
     font-weight: 700;
@@ -134,7 +119,6 @@
     text-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
 
-  /* Badge vérifié */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -148,7 +132,6 @@
   }
   .badge svg { width: 18px; height: 18px; }
 
-  /* Bouton */
   .cta {
     display: block;
     width: 100%;
@@ -161,7 +144,6 @@
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    letter-spacing: 0.01em;
     text-decoration: none;
     cursor: pointer;
     transition: background 0.18s ease, transform 0.12s ease;
@@ -169,34 +151,103 @@
   }
   .cta:hover { background: rgba(255,255,255,0.18); transform: scale(1.01); }
 
-  @media (prefers-reduced-motion: reduce) {
-    .deco { animation: none; }
-    .cta { transition: none; }
+  /* ── MODALE ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    animation: fadeIn 0.2s ease;
+  }
+  .modal-overlay.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
-  /* ── Mobile uniquement (<768px) ── */
+  .modal-card {
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 28px;
+    padding: 48px 32px;
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+    animation: slideUp 0.22s ease;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(24px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-icon { font-size: 52px; margin-bottom: 20px; }
+
+  .modal-card h2 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .modal-card p {
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .btn-yes {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 100px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-yes:hover { background: rgba(255,255,255,0.35); }
+
+  .btn-no {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .btn-no:hover { color: rgba(255,255,255,0.85); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .deco { animation: none; }
+    .cta, .modal-overlay, .modal-card { animation: none; transition: none; }
+  }
+
   @media (max-width: 767px) {
-    body { padding: 8px; align-items: center; }
+    body { padding: 8px; }
     .card {
       width: calc(100vw - 24px);
       max-width: 360px;
-      min-height: auto;
       border-radius: 28px;
-      border: 2px solid rgba(255,255,255,0.55);
       padding: 36px 18px 32px;
-      background: rgba(255,255,255,0.07);
     }
-    .avatar {
-      width: min(52vw, 170px);
-      height: min(52vw, 170px);
-    }
+    .avatar { width: min(52vw, 170px); height: min(52vw, 170px); }
     .name { font-size: clamp(26px, 7vw, 34px); }
-    .cta {
-      font-size: 18px;
-      padding: 16px 22px;
-      margin-top: 20px;
-    }
-    /* décos repositionnées autour de la carte */
+    .cta { font-size: 18px; padding: 16px 22px; margin-top: 20px; }
     .deco-1 { top: 3%; left: 2%; font-size: 28px; }
     .deco-2 { top: 15%; right: 2%; font-size: 36px; }
     .deco-3 { bottom: 18%; left: 2%; font-size: 32px; }
@@ -205,34 +256,19 @@
     .deco-6 { bottom: 32%; left: 1%; font-size: 18px; }
   }
 
-  /* ── PC uniquement (≥768px) ── */
   @media (min-width: 768px) {
-    body {
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
+    body { align-items: center; justify-content: center; padding: 40px; }
     .card {
       width: 340px;
       max-width: 340px;
-      min-height: auto;
       border-radius: 24px;
       border: 1.5px solid rgba(255,255,255,0.5);
       padding: 32px 24px 28px;
       background: rgba(255,255,255,0.08);
     }
-    .avatar {
-      width: 160px;
-      height: 160px;
-    }
+    .avatar { width: 160px; height: 160px; }
     .name { font-size: 30px; }
-    .cta {
-      font-size: 18px;
-      padding: 16px 22px;
-      margin-top: 20px;
-      background: rgba(220,130,160,0.55);
-      border: 1.5px solid rgba(255,255,255,0.5);
-    }
+    .cta { font-size: 18px; padding: 16px 22px; margin-top: 20px; }
   }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -259,7 +295,19 @@
       </svg>
     </span>
   </h1>
-  <a class="cta" href="/age" target="_blank" rel="noreferrer noopener">View More</a>
+  <button class="cta" onclick="document.getElementById('ageModal').classList.add('active')">View More</button>
 </div>
+
+<!-- Modale vérification d'âge -->
+<div class="modal-overlay" id="ageModal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal-card">
+    <div class="modal-icon">🔞</div>
+    <h2>Contenu pour adultes</h2>
+    <p>Ce site contient du contenu réservé aux personnes majeures. En continuant, vous confirmez avoir au moins 18 ans.</p>
+    <a class="btn-yes" href="/go" target="_blank" rel="noreferrer noopener" onclick="document.getElementById('ageModal').classList.remove('active')">J'ai 18 ans ou plus ✓</a>
+    <a class="btn-no" href="https://www.google.com">Je suis mineur — quitter</a>
+  </div>
+</div>
+
 </body>
 </html>
