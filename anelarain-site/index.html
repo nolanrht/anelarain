@@ -30,17 +30,93 @@
   header {
     width: 100%;
     max-width: 600px;
-    padding: 28px 20px 8px;
-    text-align: center;
+    padding: 20px 16px 8px;
   }
 
-  header h1 {
-    font-size: 28px;
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav h1 {
+    font-size: 26px;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: #111;
     font-style: italic;
   }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+    color: #111;
+    border-radius: 50%;
+    transition: background 0.15s;
+  }
+  .nav-btn:hover { background: #f0f0f0; }
+
+  /* hamburger lines */
+  #menuBtn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #111;
+    border-radius: 2px;
+  }
+
+  .search-bar {
+    display: none;
+    padding: 10px 0 4px;
+  }
+  .search-bar.active { display: block; }
+
+  .search-bar input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 100px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background: #f7f7f7;
+    color: #111;
+    transition: border-color 0.2s;
+  }
+  .search-bar input:focus { border-color: #111; background: #fff; }
+
+  .menu-dropdown {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 200px;
+    background: #fff;
+    border-radius: 0 0 16px 0;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.12);
+    z-index: 200;
+    padding: 60px 0 12px;
+  }
+  .menu-dropdown.active { display: block; }
+
+  .menu-item {
+    display: block;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .menu-item:hover { background: #f5f5f5; }
 
   .grid {
     width: 100%;
@@ -152,12 +228,44 @@
   }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+function toggleMenu() {
+  document.getElementById('menuDropdown').classList.toggle('active');
+  document.getElementById('searchBar').classList.remove('active');
+}
+function toggleSearch() {
+  var bar = document.getElementById('searchBar');
+  bar.classList.toggle('active');
+  document.getElementById('menuDropdown').classList.remove('active');
+  if (bar.classList.contains('active')) document.getElementById('searchInput').focus();
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#menuBtn') && !e.target.closest('.menu-dropdown'))
+    document.getElementById('menuDropdown').classList.remove('active');
+});
+</script>
 </head>
 <body>
 
 <header>
-  <h1>anela rain</h1>
+  <div class="nav">
+    <button class="nav-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <h1>anela rain</h1>
+    <button class="nav-btn" id="searchBtn" onclick="toggleSearch()" aria-label="Search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="Search…" id="searchInput" autocomplete="off">
+  </div>
 </header>
+
+<!-- Menu dropdown -->
+<div class="menu-dropdown" id="menuDropdown">
+  <a href="/" class="menu-item">Home</a>
+</div>
 
 <div class="grid">
   <a class="tile" href="https://x.com/anelarain?s=11" target="_blank" rel="noreferrer noopener">
