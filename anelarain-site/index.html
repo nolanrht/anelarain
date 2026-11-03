@@ -94,22 +94,32 @@
   }
   .search-bar input:focus { border-color: #111; background: #fff; }
 
-  .menu-dropdown {
+  /* Sidebar menu */
+  .menu-sidebar {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 200px;
+    top: 0; left: 0; bottom: 0;
+    width: 220px;
     background: #fff;
-    border-radius: 0 0 16px 0;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.12);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.10);
     z-index: 200;
-    padding: 60px 0 12px;
+    flex-direction: column;
+    padding: 80px 0 32px;
   }
-  .menu-dropdown.active { display: block; }
+  .menu-sidebar.active { display: flex; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    background: rgba(0,0,0,0.18);
+  }
+  .sidebar-overlay.active { display: block; }
 
   .menu-item {
     display: block;
-    padding: 14px 24px;
+    padding: 16px 28px;
     font-size: 16px;
     font-weight: 700;
     color: #111;
@@ -117,6 +127,28 @@
     letter-spacing: -0.01em;
   }
   .menu-item:hover { background: #f5f5f5; }
+
+  /* Instagram bubble */
+  .insta-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 50%;
+    padding: 8px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin: 8px auto 0;
+    width: 44px;
+    height: 44px;
+    transition: box-shadow 0.15s;
+  }
+  .insta-bubble:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.13); }
+  .insta-icon {
+    width: 24px; height: 24px;
+    flex-shrink: 0;
+  }
 
   .grid {
     width: 100%;
@@ -231,6 +263,7 @@
 <script>
 function toggleMenu() {
   document.getElementById('menuDropdown').classList.toggle('active');
+  document.getElementById('sidebarOverlay').classList.toggle('active');
   document.getElementById('searchBar').classList.remove('active');
 }
 function toggleSearch() {
@@ -239,10 +272,6 @@ function toggleSearch() {
   document.getElementById('menuDropdown').classList.remove('active');
   if (bar.classList.contains('active')) document.getElementById('searchInput').focus();
 }
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('#menuBtn') && !e.target.closest('.menu-dropdown'))
-    document.getElementById('menuDropdown').classList.remove('active');
-});
 </script>
 </head>
 <body>
@@ -262,10 +291,31 @@ document.addEventListener('click', function(e) {
   </div>
 </header>
 
-<!-- Menu dropdown -->
-<div class="menu-dropdown" id="menuDropdown">
+<!-- Sidebar overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+<!-- Sidebar menu -->
+<div class="menu-sidebar" id="menuDropdown">
   <a href="/" class="menu-item">Home</a>
 </div>
+
+<!-- Instagram bubble -->
+<a class="insta-bubble" href="https://www.instagram.com/anelaraiin" target="_blank" rel="noreferrer noopener">
+  <svg class="insta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f09433"/>
+        <stop offset="25%" stop-color="#e6683c"/>
+        <stop offset="50%" stop-color="#dc2743"/>
+        <stop offset="75%" stop-color="#cc2366"/>
+        <stop offset="100%" stop-color="#bc1888"/>
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#ig)"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.8"/>
+    <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+  </svg>
+</a>
 
 <div class="grid">
   <a class="tile" href="https://x.com/anelarain?s=11" target="_blank" rel="noreferrer noopener">
