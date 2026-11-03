@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anela Rain</title>
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7FKVJ9F6Y"></script>
 <script>
@@ -15,290 +14,163 @@
   gtag('js', new Date());
   gtag('config', 'G-F7FKVJ9F6Y');
 </script>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap">
 <style>
-  :root { color-scheme: dark; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    height: 100%;
-    min-height: 100dvh;
-  }
-
   body {
+    background: #fff;
     font-family: 'Inter', system-ui, sans-serif;
     min-height: 100dvh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    overflow-x: hidden;
-    position: relative;
-    background: #f07aaa;
-  }
-
-  .bg-layer {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .bg-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    filter: blur(2px) brightness(0.9) saturate(1.1);
-    transform: scale(1.05);
-  }
-
-  .pink-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(to bottom, rgba(255,190,215,0.2) 0%, rgba(255,130,175,0.4) 100%);
-  }
-
-  .deco {
-    position: fixed;
-    z-index: 2;
-    color: rgba(255,200,215,0.7);
-    pointer-events: none;
-    user-select: none;
-    animation: float 4s ease-in-out infinite;
-  }
-  .deco-1 { top: 18%; left: 7%;  font-size: 36px; animation-delay: 0s; }
-  .deco-2 { top: 35%; right: 8%; font-size: 48px; animation-delay: 1s; }
-  .deco-3 { bottom: 30%; left: 10%; font-size: 44px; animation-delay: 2s; }
-  .deco-4 { bottom: 16%; right: 7%; font-size: 32px; animation-delay: 0.5s; }
-  .deco-5 { top: 10%; right: 20%; font-size: 28px; animation-delay: 1.5s; }
-  .deco-6 { bottom: 45%; left: 5%; font-size: 24px; animation-delay: 3s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .card {
-    position: relative;
-    z-index: 3;
-    width: calc(100vw - 24px);
-    max-width: 380px;
-    background: rgba(255,255,255,0.07);
-    border: 2px solid rgba(255,255,255,0.55);
-    border-radius: 28px;
-    padding: 36px 20px 32px;
-    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  header {
+    width: 100%;
+    max-width: 600px;
+    padding: 28px 20px 8px;
     text-align: center;
   }
 
-  .avatar {
-    width: min(52vw, 190px);
-    height: min(52vw, 190px);
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center 10%;
-    border: 4px solid rgba(255,255,255,0.95);
-    box-shadow: 0 6px 30px rgba(0,0,0,0.35);
-    margin-bottom: 20px;
-    display: block;
+  header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #111;
+    font-style: italic;
   }
 
-  .name {
-    font-size: clamp(28px, 8vw, 38px);
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, #e8a0c0, #c060a0);
-    border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(180,60,120,0.5);
-  }
-  .badge svg { width: 18px; height: 18px; }
-
-  .cta {
-    display: block;
+  .grid {
     width: 100%;
-    margin-top: 24px;
-    padding: 18px 24px;
-    background: rgba(220,130,160,0.55);
-    border: 1.5px solid rgba(255,255,255,0.5);
-    border-radius: 100px;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.18s ease, transform 0.12s ease;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    max-width: 600px;
+    padding: 16px 16px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
-  .cta:hover { background: rgba(255,255,255,0.18); transform: scale(1.01); }
 
-  /* ── MODALE ── */
+  .tile {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    background: #111;
+  }
+
+  .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.92;
+  }
+
+  .tile:hover img {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+
+  .tile-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 14px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  /* Modale */
   .modal-overlay {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 100;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     align-items: center;
     justify-content: center;
     padding: 24px;
-    animation: fadeIn 0.2s ease;
   }
   .modal-overlay.active { display: flex; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
   .modal-card {
-    background: rgba(255,255,255,0.12);
-    border: 2px solid rgba(255,255,255,0.5);
-    border-radius: 28px;
-    padding: 48px 32px;
-    max-width: 340px;
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px 28px;
+    max-width: 320px;
     width: 100%;
     text-align: center;
-    animation: slideUp 0.22s ease;
   }
 
-  @keyframes slideUp {
-    from { transform: translateY(24px); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-  }
-
-  .modal-icon { font-size: 52px; margin-bottom: 20px; }
+  .modal-icon { font-size: 48px; margin-bottom: 16px; }
 
   .modal-card h2 {
-    color: #fff;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    color: #111;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
   }
 
   .modal-card p {
-    color: rgba(255,255,255,0.85);
+    color: #666;
     font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .btn-yes {
     display: block;
     width: 100%;
-    padding: 18px;
-    background: rgba(255,255,255,0.25);
-    border: 2px solid rgba(255,255,255,0.7);
+    padding: 16px;
+    background: #111;
     border-radius: 100px;
     color: #fff;
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     text-decoration: none;
     margin-bottom: 12px;
     cursor: pointer;
-    transition: background 0.2s;
   }
-  .btn-yes:hover { background: rgba(255,255,255,0.35); }
 
   .btn-no {
     display: block;
-    color: rgba(255,255,255,0.6);
+    color: #999;
     font-size: 13px;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 8px;
-  }
-  .btn-no:hover { color: rgba(255,255,255,0.85); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .deco { animation: none; }
-    .cta, .modal-overlay, .modal-card { animation: none; transition: none; }
-  }
-
-  @media (max-width: 767px) {
-    body { padding: 8px; }
-    .card {
-      width: calc(100vw - 24px);
-      max-width: 360px;
-      border-radius: 28px;
-      padding: 36px 18px 32px;
-    }
-    .avatar { width: min(52vw, 170px); height: min(52vw, 170px); }
-    .name { font-size: clamp(26px, 7vw, 34px); }
-    .cta { font-size: 18px; padding: 16px 22px; margin-top: 20px; }
-    .deco-1 { top: 3%; left: 2%; font-size: 28px; }
-    .deco-2 { top: 15%; right: 2%; font-size: 36px; }
-    .deco-3 { bottom: 18%; left: 2%; font-size: 32px; }
-    .deco-4 { bottom: 4%; right: 3%; font-size: 26px; }
-    .deco-5 { top: 2%; right: 15%; font-size: 20px; }
-    .deco-6 { bottom: 32%; left: 1%; font-size: 18px; }
-  }
-
-  @media (min-width: 768px) {
-    body { align-items: center; justify-content: center; padding: 40px; }
-    .card {
-      width: 340px;
-      max-width: 340px;
-      border-radius: 24px;
-      border: 1.5px solid rgba(255,255,255,0.5);
-      padding: 32px 24px 28px;
-      background: rgba(255,255,255,0.08);
-    }
-    .avatar { width: 160px; height: 160px; }
-    .name { font-size: 30px; }
-    .cta { font-size: 18px; padding: 16px 22px; margin-top: 20px; }
   }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<div class="bg-layer">
-  <img class="bg-photo" src="/bg.jpg" alt="">
-</div>
-<div class="pink-overlay"></div>
 
-<span class="deco deco-1">✦</span>
-<span class="deco deco-2">♡</span>
-<span class="deco deco-3">♡</span>
-<span class="deco deco-4">✦</span>
-<span class="deco deco-5">✦</span>
-<span class="deco deco-6">♡</span>
+<header>
+  <h1>anela rain</h1>
+</header>
 
-<div class="card">
-  <img class="avatar" src="/avatar.jpg" alt="Anela Rain">
-  <h1 class="name">Anela Rain
-    <span class="badge">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
-  </h1>
-  <button class="cta" onclick="document.getElementById('ageModal').classList.add('active')">View More</button>
+<div class="grid">
+  <a class="tile" href="https://x.com/anelarain?s=11" target="_blank" rel="noreferrer noopener">
+    <img src="/tile_twitter.jpg" alt="X">
+    <div class="tile-label">X</div>
+  </a>
+  <a class="tile" href="#" onclick="document.getElementById('ageModal').classList.add('active');return false;">
+    <img src="/tile_of.jpg" alt="Exclusive Content">
+    <div class="tile-label">Exclusive Content</div>
+  </a>
 </div>
 
-<!-- Modale vérification d'âge -->
+<!-- Age modal -->
 <div class="modal-overlay" id="ageModal" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal-card">
     <div class="modal-icon">🔞</div>
@@ -308,47 +180,18 @@
     <a class="btn-no" id="m-no" href="#" onclick="document.getElementById('ageModal').classList.remove('active');return false;"></a>
   </div>
 </div>
+
 <script>
 (function(){
   var i18n = {
-    fr: {
-      title: "Contenu pour adultes",
-      body:  "Ce site contient du contenu réservé aux personnes majeures. En continuant, vous confirmez avoir au moins 18 ans.",
-      yes:   "J'ai 18 ans ou plus ✓",
-      no:    "Je suis mineur — fermer"
-    },
-    en: {
-      title: "Adult content",
-      body:  "This site contains content intended for adults only. By continuing, you confirm that you are at least 18 years old.",
-      yes:   "I am 18 or older ✓",
-      no:    "I am a minor — close"
-    },
-    es: {
-      title: "Contenido para adultos",
-      body:  "Este sitio contiene contenido exclusivo para mayores de edad. Al continuar, confirmas que tienes al menos 18 años.",
-      yes:   "Tengo 18 años o más ✓",
-      no:    "Soy menor de edad — cerrar"
-    },
-    de: {
-      title: "Erwachseneninhalt",
-      body:  "Diese Seite enthält Inhalte, die nur für Erwachsene bestimmt sind. Indem Sie fortfahren, bestätigen Sie, dass Sie mindestens 18 Jahre alt sind.",
-      yes:   "Ich bin 18 oder älter ✓",
-      no:    "Ich bin minderjährig — schließen"
-    },
-    pt: {
-      title: "Conteúdo adulto",
-      body:  "Este site contém conteúdo reservado a maiores de idade. Ao continuar, você confirma ter pelo menos 18 anos.",
-      yes:   "Tenho 18 anos ou mais ✓",
-      no:    "Sou menor de idade — fechar"
-    },
-    it: {
-      title: "Contenuto per adulti",
-      body:  "Questo sito contiene contenuti riservati ai maggiorenni. Continuando, confermi di avere almeno 18 anni.",
-      yes:   "Ho 18 anni o più ✓",
-      no:    "Sono minorenne — chiudi"
-    }
+    fr: { title:"Contenu pour adultes", body:"Ce site contient du contenu réservé aux personnes majeures. En continuant, vous confirmez avoir au moins 18 ans.", yes:"J'ai 18 ans ou plus ✓", no:"Je suis mineur — fermer" },
+    en: { title:"Adult content", body:"This site contains content intended for adults only. By continuing, you confirm that you are at least 18 years old.", yes:"I am 18 or older ✓", no:"I am a minor — close" },
+    es: { title:"Contenido para adultos", body:"Este sitio contiene contenido exclusivo para mayores de edad.", yes:"Tengo 18 años o más ✓", no:"Soy menor de edad — cerrar" },
+    de: { title:"Erwachseneninhalt", body:"Diese Seite enthält Inhalte nur für Erwachsene.", yes:"Ich bin 18 oder älter ✓", no:"Ich bin minderjährig — schließen" },
+    pt: { title:"Conteúdo adulto", body:"Este site contém conteúdo reservado a maiores de idade.", yes:"Tenho 18 anos ou mais ✓", no:"Sou menor de idade — fechar" },
+    it: { title:"Contenuto per adulti", body:"Questo sito contiene contenuti riservati ai maggiorenni.", yes:"Ho 18 anni o più ✓", no:"Sono minorenne — chiudi" }
   };
-  var lang = (navigator.language || navigator.userLanguage || 'en').slice(0,2).toLowerCase();
+  var lang = (navigator.language || 'en').slice(0,2).toLowerCase();
   var t = i18n[lang] || i18n['en'];
   document.getElementById('m-title').textContent = t.title;
   document.getElementById('m-body').textContent  = t.body;
