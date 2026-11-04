@@ -153,10 +153,20 @@
   .grid {
     width: 100%;
     max-width: 600px;
-    padding: 16px 16px 32px;
+    padding: 16px 16px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
+  }
+
+  .grid-center {
+    padding: 0 16px 32px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .grid-center .tile {
+    width: calc(50% - 6px);
   }
 
 
@@ -309,6 +319,8 @@ function toggleSearch() {
     <img src="/tile_insta.jpg" alt="Instagram">
     <div class="tile-label">Instagram</div>
   </a>
+</div>
+<div class="grid grid-center">
   <a class="tile" href="#" onclick="document.getElementById('ageModal').classList.add('active');return false;">
     <img src="/tile_of.jpg" alt="Exclusive Content">
     <div class="tile-label">Exclusive Content</div>
