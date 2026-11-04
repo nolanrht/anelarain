@@ -159,10 +159,6 @@
     gap: 12px;
   }
 
-  .tile-full {
-    grid-column: 1 / -1;
-    aspect-ratio: 2/1;
-  }
 
   .tile {
     position: relative;
@@ -304,24 +300,6 @@ function toggleSearch() {
   <a href="/" class="menu-item">Home</a>
 </div>
 
-<!-- Instagram bubble -->
-<a class="insta-bubble" href="https://www.instagram.com/anelaraiin" target="_blank" rel="noreferrer noopener">
-  <svg class="insta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#f09433"/>
-        <stop offset="25%" stop-color="#e6683c"/>
-        <stop offset="50%" stop-color="#dc2743"/>
-        <stop offset="75%" stop-color="#cc2366"/>
-        <stop offset="100%" stop-color="#bc1888"/>
-      </linearGradient>
-    </defs>
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#ig)"/>
-    <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.8"/>
-    <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
-  </svg>
-</a>
-
 <div class="grid">
   <a class="tile" href="https://x.com/anelarain?s=11" target="_blank" rel="noreferrer noopener">
     <img src="/tile_x.jpg" alt="X">
@@ -331,7 +309,7 @@ function toggleSearch() {
     <img src="/tile_insta.jpg" alt="Instagram">
     <div class="tile-label">Instagram</div>
   </a>
-  <a class="tile tile-full" href="#" onclick="document.getElementById('ageModal').classList.add('active');return false;">
+  <a class="tile" href="#" onclick="document.getElementById('ageModal').classList.add('active');return false;">
     <img src="/tile_of.jpg" alt="Exclusive Content">
     <div class="tile-label">Exclusive Content</div>
   </a>
